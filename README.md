@@ -54,11 +54,31 @@
     - true: ypspurの関数と実測値を用いて，odomを計算します
     - false: cmd_velからodomを計算します
 # Install
+
+
 ```
-git clone https://github.com/haruyama8940/icart_mini_driver
-git clone https://github.com/openspur/yp-spur
-git clone https://github.com/ros2/teleop_twist_joy
+# ypspurのインストール
+cd ~/colcon_ws/src
+git clone https://github.com/hokuyo-rd/yp-spur.git
+cd yp-spur
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+
+# モータドライバインストールの確認
+# 端末 1
+ypspur-coordinator -d /dev/ttyUSB0 --blvr -p ~/colcon_ws/src/hokuyo_navigation2/params/icart_ypspur_params/iCart3_100W.param
+
+# 端末 2
+cd ~/colcon_ws/src/yp-spur/build/sample
+./run-test
+
+# icart_mini_driver_ros2のインストール
+git clone https://github.com/hokuyo-rd/icart_mini_driver_ros2.git
 ```
+
 # Build
 ```
 cd install_your_workspace
