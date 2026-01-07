@@ -56,7 +56,8 @@
 # Install
 ```
 # ypspurのインストール
-cd ~/colcon_ws/src
+cd ~/hokuyo_lib
+sudo apt-get install libmodbus-dev
 git clone https://github.com/hokuyo-rd-release/yp-spur.git
 cd yp-spur
 mkdir build
